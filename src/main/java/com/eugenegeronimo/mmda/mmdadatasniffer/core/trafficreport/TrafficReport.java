@@ -20,6 +20,9 @@ public class TrafficReport {
         if (lines == null) {
             throw new IllegalArgumentException("Lines cannot be null");
         }
+        if (lines.isEmpty()) {
+            throw new IllegalArgumentException("Lines must have a minimum of 1 item");
+        }
 
         this.timestamp = timestamp;
         this.lines = lines;

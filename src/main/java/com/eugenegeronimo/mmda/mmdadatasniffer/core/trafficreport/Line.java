@@ -17,7 +17,7 @@ public class Line {
         if (trafficPoints == null) {
             throw new IllegalArgumentException("Traffic Points cannot be null");
         }
-        if (trafficPoints.size() < 1) {
+        if (trafficPoints.isEmpty()) {
             throw new IllegalArgumentException("Traffic Points must have a minimum of 1 item");
         }
 

@@ -25,7 +25,7 @@ public class TrafficPoint {
         if (routes == null) {
             throw new IllegalArgumentException("Routes cannot be null");
         }
-        if (routes.size() < 1) {
+        if (routes.isEmpty()) {
             throw new IllegalArgumentException("Routes must have a minimum of 1 item");
         }
 

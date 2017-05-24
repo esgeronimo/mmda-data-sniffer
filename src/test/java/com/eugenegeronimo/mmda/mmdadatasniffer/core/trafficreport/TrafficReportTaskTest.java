@@ -22,7 +22,7 @@ public class TrafficReportTaskTest {
     }
 
     @Test
-    public void shouldThrowHttpExceptionOnGetAndSave() throws BaseApiClient.HttpException {
+    public void shouldNotSaveTrafficReportWhenHttpExceptionThrown() throws BaseApiClient.HttpException {
         TrafficReportRepository repository = Mockito.mock(TrafficReportRepository.class);
 
         TrafficReportApiClient apiClient = Mockito.mock(TrafficReportApiClient.class);
@@ -31,6 +31,7 @@ public class TrafficReportTaskTest {
 
         new TrafficReportTask(repository, apiClient).getAndSave();
 
+        Mockito.verify(apiClient, Mockito.times(1)).get(Mockito.anyLong());
         Mockito.verify(repository, Mockito.never()).save(Mockito.any(TrafficReport.class));
     }
 }

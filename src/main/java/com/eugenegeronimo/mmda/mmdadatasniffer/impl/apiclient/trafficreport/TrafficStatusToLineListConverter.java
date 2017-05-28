@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -39,6 +40,9 @@ public class TrafficStatusToLineListConverter {
 
     @Autowired
     private MessageSource messageSource;
+
+    @Autowired
+    private JsonParser jsonParser;
 
     /**
      * Convert server provided JSON resource to list of {@link Line}

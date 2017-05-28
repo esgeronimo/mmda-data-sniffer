@@ -21,17 +21,22 @@ public class OkHttpClientTrafficReportApiClient implements TrafficReportApiClien
 
     private static final Logger log = LoggerFactory.getLogger(OkHttpClientTrafficReportApiClient.class);
 
-    @Autowired
     private OkHttpClient client;
 
-    @Autowired
     private JsonParser jsonParser;
 
-    @Autowired
     private TrafficStatusToLineListConverter converter;
 
-    @Value("${api.url.trafficreport}")
     private String url;
+
+    @Autowired(required = true)
+    public OkHttpClientTrafficReportApiClient(OkHttpClient client,
+                                              TrafficStatusToLineListConverter converter,
+                                              @Value("${api.url.trafficreport}") String url) {
+        this.client = client;
+        this.converter = converter;
+        this.url = url;
+    }
 
     @Override
     public TrafficReport get(Long timestamp) throws HttpException {
@@ -54,11 +59,11 @@ public class OkHttpClientTrafficReportApiClient implements TrafficReportApiClien
                         converter.parse(response.body().string()) //lines
                 );
             }
-
+            // Throw HttpException if response is not successful
+            throw new HttpException(response.message(), response.code());
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-            throw new HttpException(e.getMessage(), e);
+            throw new HttpException(e.getMessage(), e, HttpException.STATUS_INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 }

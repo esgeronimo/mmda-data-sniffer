@@ -1,7 +1,7 @@
 # mmda-data-sniffer
 [![Build Status](https://travis-ci.org/esgeronimo/mmda-data-sniffer.svg?branch=master)](https://travis-ci.org/esgeronimo/mmda-data-sniffer)
 
-Just some application that gets data from from MMDA Interaksyon occasionally and stores information in a MongoDB database.
+Just some application that gets data from MMDA Interaksyon occasionally and stores information in a MongoDB database.
 
 ## Document Structure
 ### Traffic Report

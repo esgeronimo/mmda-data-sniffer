@@ -62,7 +62,8 @@ Sample document stored in database:
                     ]
                 } 
             ]
-        }, 
+        },
+        ...
     ]
 }
 ```

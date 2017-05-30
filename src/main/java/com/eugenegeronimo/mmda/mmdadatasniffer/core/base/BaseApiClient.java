@@ -1,14 +1,12 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.base;
 
-public interface BaseApiClient<T> {
+import java.io.IOException;
+
+public interface BaseApiClient {
 
     public static final String QUERY_PARAMS_TIMESTAMP = "_";
 
-    public T get(Long timestamp) throws HttpException;
-
     public static class HttpException extends Exception {
-
-        public static final int STATUS_INTERNAL_SERVER_ERROR = 500;
 
         private int statusCode;
 

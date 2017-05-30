@@ -1,4 +1,4 @@
-package com.eugenegeronimo.mmda.mmdadatasniffer.core.advisory;
+package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
 public class Advisory {
     private String id;

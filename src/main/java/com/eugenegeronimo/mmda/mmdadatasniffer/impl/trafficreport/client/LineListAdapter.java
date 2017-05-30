@@ -1,7 +1,6 @@
-package com.eugenegeronimo.mmda.mmdadatasniffer.impl.apiclient.trafficreport;
+package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 
-import com.eugenegeronimo.mmda.mmdadatasniffer.impl.apiclient.LineMap;
-import com.eugenegeronimo.mmda.mmdadatasniffer.impl.apiclient.TrafficPointMap;
+import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Route;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Line;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficPoint;
 import org.json.JSONArray;
@@ -15,9 +14,9 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class TrafficStatusToLineListConverter {
+public class LineListAdapter {
 
-    private static final Logger log = LoggerFactory.getLogger(TrafficStatusToLineListConverter.class);
+    private static final Logger log = LoggerFactory.getLogger(LineListAdapter.class);
 
     private static final int INDEX_TRAFFIC_POINT_DETAILS = 0;
     private static final int INDEX_TRAFFIC_POINT_DETAILS_LINE_ID = 0;
@@ -98,11 +97,11 @@ public class TrafficStatusToLineListConverter {
     private TrafficPoint createTrafficPoint(JSONArray trafficPointArray) {
         // Instantiate North-Bound Route
         JSONArray northBoundDetails = (JSONArray) trafficPointArray.get(INDEX_TRAFFIC_POINT_ROUTE_NORTH_BOUND);
-        TrafficPoint.Route northBoundRoute = createRoute(northBoundDetails, MESSAGE_KEY_TRAFFICPOINT_ROUTE_NAME_NORTHBOUND);
+        Route northBoundRoute = createRoute(northBoundDetails, MESSAGE_KEY_TRAFFICPOINT_ROUTE_NAME_NORTHBOUND);
 
         // Instantiate South-Bound Route
         JSONArray southBoundDetails = (JSONArray) trafficPointArray.get(INDEX_TRAFFIC_POINT_ROUTE_SOUTH_BOUND);
-        TrafficPoint.Route southBoundRoute = createRoute(southBoundDetails, MESSAGE_KEY_TRAFFICPOINT_ROUTE_NAME_SOUTHBOUND);
+        Route southBoundRoute = createRoute(southBoundDetails, MESSAGE_KEY_TRAFFICPOINT_ROUTE_NAME_SOUTHBOUND);
 
         JSONArray trafficPointDetails = (JSONArray) trafficPointArray.get(INDEX_TRAFFIC_POINT_DETAILS);
 
@@ -117,19 +116,20 @@ public class TrafficStatusToLineListConverter {
                 lineId,
                 lineName,
                 trafficPointName,
-                Arrays.asList(northBoundRoute, southBoundRoute)
+                Arrays.asList(northBoundRoute, southBoundRoute),
+                null
         );
     }
 
     /**
-     * Generate {@link TrafficPoint.Route} from route details JSON array and set route name from given message resource key
+     * Generate {@link Route} from route details JSON array and set route name from given message resource key
      *
      * @param routeDetails
      * @param routeNameKey
      * @return
      * @throws IllegalArgumentException
      */
-    private TrafficPoint.Route createRoute(JSONArray routeDetails, String routeNameKey) throws IllegalArgumentException {
+    private Route createRoute(JSONArray routeDetails, String routeNameKey) throws IllegalArgumentException {
         String routeName = messageSource.getMessage(
                 routeNameKey,
                 null,
@@ -138,6 +138,6 @@ public class TrafficStatusToLineListConverter {
         Integer trafficLevel = routeDetails.getInt(INDEX_TRAFFIC_POINT_ROUTE_X_BOUND_TRAFFIC_LEVEL);
         Long timestamp = routeDetails.getLong(INDEX_TRAFFIC_POINT_ROUTE_X_BOUND_TIMESTAMP);
 
-        return new TrafficPoint.Route(routeName, trafficLevel, timestamp);
+        return new Route(routeName, trafficLevel, timestamp);
     }
 }

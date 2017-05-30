@@ -1,5 +1,6 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrafficPoint {
@@ -8,8 +9,9 @@ public class TrafficPoint {
     private String lineName;
     private String name;
     private List<Route> routes;
+    private List<Advisory> advisories; // optional
 
-    public TrafficPoint(String id, String lineId, String lineName, String name, List<Route> routes) {
+    public TrafficPoint(String id, String lineId, String lineName, String name, List<Route> routes, List<Advisory> advisories) {
         if (id == null) {
             throw new IllegalArgumentException("Id cannot be null");
         }
@@ -34,6 +36,7 @@ public class TrafficPoint {
         this.lineName = lineName;
         this.name = name;
         this.routes = routes;
+        this.advisories =  advisories;
     }
 
     public String getId() {
@@ -69,6 +72,9 @@ public class TrafficPoint {
     }
 
     public List<Route> getRoutes() {
+        if (routes == null) {
+            routes = new ArrayList<>();
+        }
         return routes;
     }
 
@@ -76,48 +82,14 @@ public class TrafficPoint {
         this.routes = routes;
     }
 
-    public static class Route {
-        private String name;
-        private Long timestamp;
-        private Integer congestionLevel;
+    public List<Advisory> getAdvisories() {
+        return advisories;
+    }
 
-        public Route(String name, Integer congestionLevel, Long timestamp) {
-            if (name == null) {
-                throw new IllegalArgumentException("Name cannot be null");
-            }
-            if (congestionLevel == null) {
-                throw new IllegalArgumentException("Congestion Level cannot be null");
-            }
-            if (timestamp == null) {
-                throw new IllegalArgumentException("Timestamp cannot be null");
-            }
-            this.name = name;
-            this.congestionLevel = congestionLevel;
-            this.timestamp = timestamp;
+    public void setAdvisories(List<Advisory> advisories) {
+        if (routes == null) {
+            routes = new ArrayList<>();
         }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getCongestionLevel() {
-            return congestionLevel;
-        }
-
-        public void setCongestionLevel(Integer congestionLevel) {
-            this.congestionLevel = congestionLevel;
-        }
-
-        public Long getTimestamp() {
-            return timestamp;
-        }
-
-        public void setTimestamp(Long timestamp) {
-            this.timestamp = timestamp;
-        }
+        this.advisories = advisories;
     }
 }

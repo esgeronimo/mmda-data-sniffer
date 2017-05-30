@@ -1,4 +1,4 @@
-package com.eugenegeronimo.mmda.mmdadatasniffer.impl.apiclient;
+package com.eugenegeronimo.mmda.mmdadatasniffer.impl.base;
 
 import okhttp3.OkHttpClient;
 import org.springframework.boot.json.JsonJsonParser;

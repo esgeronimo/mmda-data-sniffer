@@ -1,8 +1,10 @@
-package com.eugenegeronimo.mmda.mmdadatasniffer.impl.apiclient.trafficreport;
+package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.base.BaseApiClient;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Line;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficReport;
+import com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client.OkHttpTrafficReportClient;
+import com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client.LineListAdapter;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;
 import okhttp3.OkHttpClient;
@@ -15,7 +17,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 
-public class OkHttpClientTrafficReportApiClientTest {
+public class OkHttpTrafficReportClientTest {
 
     private MockWebServer server;
 
@@ -30,19 +32,19 @@ public class OkHttpClientTrafficReportApiClientTest {
         OkHttpClient client = new OkHttpClient();
 
         // Initialise converter
-        TrafficStatusToLineListConverter converter = Mockito.mock(TrafficStatusToLineListConverter.class);
+        LineListAdapter converter = Mockito.mock(LineListAdapter.class);
 
         // Initialise url
         String url = String.format("http://%s:%d/trafficReport", server.getHostName(), server.getPort());
 
         // Instantiate API client
-        OkHttpClientTrafficReportApiClient trafficReportApiClient = new OkHttpClientTrafficReportApiClient(client, converter, url);
+        OkHttpTrafficReportClient trafficReportApiClient = new OkHttpTrafficReportClient(client, converter, url);
 
         Line line = Mockito.mock(Line.class);
         Mockito.when(converter.parse(responseJson)).thenReturn(Arrays.asList(line));
 
         Long timestamp = new Date().getTime();
-        TrafficReport trafficReport = trafficReportApiClient.get(timestamp);
+        TrafficReport trafficReport = trafficReportApiClient.getTrafficReport(timestamp);
 
         Assert.assertFalse(trafficReport.getLines().isEmpty());
         Assert.assertEquals(1, trafficReport.getLines().size());
@@ -61,16 +63,16 @@ public class OkHttpClientTrafficReportApiClientTest {
         OkHttpClient client = new OkHttpClient();
 
         // Initialise converter
-        TrafficStatusToLineListConverter converter = Mockito.mock(TrafficStatusToLineListConverter.class);
+        LineListAdapter converter = Mockito.mock(LineListAdapter.class);
 
         // Initialise url
         String url = String.format("http://%s:%d/trafficReport", server.getHostName(), server.getPort());
 
         // Instantiate API client
-        OkHttpClientTrafficReportApiClient trafficReportApiClient = new OkHttpClientTrafficReportApiClient(client, converter, url);
+        OkHttpTrafficReportClient trafficReportApiClient = new OkHttpTrafficReportClient(client, converter, url);
 
         try {
-            trafficReportApiClient.get(1L);
+            trafficReportApiClient.getTrafficReport(1L);
         } catch (BaseApiClient.HttpException e) {
             // No conversion should be triggered if API call returns unsuccessful response
             Mockito.verify(converter, Mockito.never()).parse(Mockito.anyString());

@@ -1,9 +1,8 @@
-package com.eugenegeronimo.mmda.mmdadatasniffer.impl.repository;
+package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.repository;
 
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficReport;
-import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficReportRepository;
+import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.repository.TrafficReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;

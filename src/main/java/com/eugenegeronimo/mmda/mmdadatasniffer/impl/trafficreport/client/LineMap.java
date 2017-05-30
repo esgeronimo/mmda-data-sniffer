@@ -1,4 +1,4 @@
-package com.eugenegeronimo.mmda.mmdadatasniffer.impl.apiclient;
+package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 
 import org.springframework.stereotype.Component;
 

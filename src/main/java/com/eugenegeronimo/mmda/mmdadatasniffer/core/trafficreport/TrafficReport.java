@@ -24,6 +24,7 @@ public class TrafficReport {
             throw new IllegalArgumentException("Lines must have a minimum of 1 item");
         }
 
+        this.id = id;
         this.timestamp = timestamp;
         this.lines = lines;
     }

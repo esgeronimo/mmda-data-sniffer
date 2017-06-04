@@ -1,5 +1,6 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -34,5 +35,16 @@ public class LineTest {
         Mockito.when(trafficPoints.isEmpty()).thenReturn(true);
 
         new Line("ID", null, trafficPoints);
+    }
+
+    @Test
+    public void shouldReturnInitiatedValues() {
+        List trafficPoints = Mockito.mock(List.class);
+        Mockito.when(trafficPoints.isEmpty()).thenReturn(false);
+
+        Line line = new Line("ID", "Name", trafficPoints);
+        Assert.assertEquals("ID", line.getId());
+        Assert.assertEquals("Name", line.getName());
+        Assert.assertEquals(trafficPoints, line.getTrafficPoints());
     }
 }

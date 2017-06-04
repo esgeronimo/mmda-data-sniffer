@@ -73,4 +73,19 @@ public class TrafficPointTest {
             Assert.assertTrue(e.getMessage(), false); // Fails test if an exception is encountered caused by null advisories
         }
     }
+
+    @Test
+    public void shouldReturnInitiatedValues() {
+        List routes = Mockito.mock(List.class);
+        Mockito.when(routes.isEmpty()).thenReturn(false);
+        List advisories = Mockito.mock(List.class);
+
+        TrafficPoint trafficPoint = new TrafficPoint("ID", "Line ID", "Line Name", "Name", routes, advisories);
+        Assert.assertEquals("ID", trafficPoint.getId());
+        Assert.assertEquals("Line ID", trafficPoint.getLineId());
+        Assert.assertEquals("Line Name", trafficPoint.getLineName());
+        Assert.assertEquals("Name", trafficPoint.getName());
+        Assert.assertEquals(routes, trafficPoint.getRoutes());
+        Assert.assertEquals(advisories, trafficPoint.getAdvisories());
+    }
 }

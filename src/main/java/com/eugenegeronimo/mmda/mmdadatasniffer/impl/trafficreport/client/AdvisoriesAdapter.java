@@ -1,8 +1,6 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Advisory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Component;
@@ -14,9 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class AdvisoriesAdapter {
-
-    private static final String JSON_ARRAY_FIRST_CHAR = "[";
+public class AdvisoriesAdapter extends BaseAdapter {
 
     private static final int INDEX_ADVISORY_DETAILS_LINE_ID = 0;
     private static final int INDEX_ADVISORY_DETAILS_TRAFFIC_POINT_ID = 1;
@@ -41,13 +37,6 @@ public class AdvisoriesAdapter {
         });
 
         return advisories;
-    }
-
-    // The org.springframework.boot.json.JsonParser sucks! Has no method to check if input is an array of JSON
-    // Don't want to have a dependency on some JSON library for that checking.
-    // TODO: AdvisoriesAdapter.isJsonArray - Needs improvement on implementation
-    private boolean isJsonArray(String json) {
-        return json.startsWith(JSON_ARRAY_FIRST_CHAR);
     }
 
     private List<Advisory> getAdvisoriesPerTrafficPoint(Object jsonObject) {

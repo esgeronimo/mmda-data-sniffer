@@ -1,7 +1,7 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 
-import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Route;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Line;
+import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Route;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficPoint;
 import org.json.JSONArray;
 import org.slf4j.Logger;
@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 
 @Component
-public class LineListAdapter {
+public class LineListAdapter extends BaseAdapter {
 
     private static final Logger log = LoggerFactory.getLogger(LineListAdapter.class);
 
@@ -31,17 +33,21 @@ public class LineListAdapter {
     private static final String MESSAGE_KEY_TRAFFICPOINT_ROUTE_NAME_NORTHBOUND = "trafficPoint.route.name.northBound";
     private static final String MESSAGE_KEY_TRAFFICPOINT_ROUTE_NAME_SOUTHBOUND = "trafficPoint.route.name.southBound";
 
-    @Autowired
     private TrafficPointMap trafficPointMap;
 
-    @Autowired
     private LineMap lineMap;
 
-    @Autowired
     private MessageSource messageSource;
 
-    @Autowired
     private JsonParser jsonParser;
+
+    @Autowired(required = true)
+    public LineListAdapter(TrafficPointMap trafficPointMap, LineMap lineMap, MessageSource messageSource, JsonParser jsonParser) {
+        this.trafficPointMap = trafficPointMap;
+        this.lineMap = lineMap;
+        this.messageSource = messageSource;
+        this.jsonParser = jsonParser;
+    }
 
     /**
      * Convert server provided JSON resource to list of {@link Line}
@@ -50,6 +56,9 @@ public class LineListAdapter {
      * @return
      */
     public List<Line> parse(String json) {
+        Assert.isTrue(!StringUtils.isEmpty(json), "Input should not be empty");
+        Assert.isTrue(isJsonArray(json), "Input should be a JSON array: " + json);
+
         Map<String, List<TrafficPoint>> trafficPointMap = new HashMap<>();
         JSONArray trafficPointListArray = new JSONArray(json);
         Iterator<Object> trafficPointListIterator = trafficPointListArray.iterator();

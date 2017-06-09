@@ -8,6 +8,7 @@ import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.repository.Tra
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -27,7 +28,7 @@ public class TrafficReportTask implements BaseTask {
         this.apiClient = apiClient;
     }
     @Override
-    //@Scheduled(fixedDelayString = "${task.delay}")
+    @Scheduled(fixedDelayString = "${task.delay}")
     public void getAndSave() {
         try {
             TrafficReport trafficReport = apiClient.getTrafficReport(new Date().getTime());

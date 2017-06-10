@@ -1,9 +1,7 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Advisory;
-import org.json.JSONException;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.json.JsonJsonParser;
 import org.springframework.boot.json.JsonParser;

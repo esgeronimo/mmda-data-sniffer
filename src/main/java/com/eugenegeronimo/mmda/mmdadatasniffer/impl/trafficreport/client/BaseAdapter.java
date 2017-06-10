@@ -1,8 +1,5 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 
-import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
-
 public abstract class BaseAdapter {
 
     protected static final String JSON_ARRAY_FIRST_CHAR = "[";

@@ -1,4 +1,4 @@
-package com.eugenegeronimo.mmda.mmdadatasniffer.impl.base;
+package com.eugenegeronimo.mmda.mmdadatasniffer.impl;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;

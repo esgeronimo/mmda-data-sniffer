@@ -2,7 +2,6 @@ package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
 
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.base.BaseApiClient;
-import com.eugenegeronimo.mmda.mmdadatasniffer.core.base.BaseTask;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.client.TrafficReportApiClient;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.repository.TrafficReportRepository;
 import org.slf4j.Logger;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class TrafficReportTask implements BaseTask {
+public class TrafficReportTask {
 
     private static final Logger log = LoggerFactory.getLogger(TrafficReportTask.class);
 
@@ -27,7 +26,7 @@ public class TrafficReportTask implements BaseTask {
         this.repository = repository;
         this.apiClient = apiClient;
     }
-    @Override
+
     @Scheduled(fixedDelayString = "${task.delay}")
     public void getAndSave() {
         try {

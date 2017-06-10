@@ -23,7 +23,7 @@ public class AdvisoryTest {
     @Test
     public void shouldReturnInitiatedValues() {
         Advisory advisory = new Advisory("LineId", "TrafficPointId", "Message");
-        Assert.assertEquals("LineId", advisory.getLineId());
+        Assert.assertEquals("LineIds", advisory.getLineId());
         Assert.assertEquals("TrafficPointId", advisory.getTrafficPointId());
         Assert.assertEquals("Message", advisory.getMessage());
     }

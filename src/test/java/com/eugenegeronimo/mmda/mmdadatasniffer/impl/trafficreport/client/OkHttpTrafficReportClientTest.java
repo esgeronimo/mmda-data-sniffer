@@ -3,8 +3,6 @@ package com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.base.BaseApiClient;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.Line;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficReport;
-import com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client.OkHttpTrafficReportClient;
-import com.eugenegeronimo.mmda.mmdadatasniffer.impl.trafficreport.client.LineListAdapter;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;
 import okhttp3.OkHttpClient;

@@ -1,7 +1,5 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.base;
 
-import java.io.IOException;
-
 public interface BaseApiClient {
 
     public static final String QUERY_PARAMS_TIMESTAMP = "_";

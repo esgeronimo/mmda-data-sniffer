@@ -22,6 +22,7 @@ public class MongoDbTrafficReportRepository implements TrafficReportRepository {
 
     @Override
     public void save(TrafficReport trafficReport) {
+        Assert.notNull(trafficReport, "Argument trafficReport cannot be null");
         operations.save(trafficReport);
     }
 }

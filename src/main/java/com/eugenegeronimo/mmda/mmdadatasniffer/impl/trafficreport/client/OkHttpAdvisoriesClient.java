@@ -52,7 +52,7 @@ public class OkHttpAdvisoriesClient implements AdvisoriesClient {
             }
             // Throw HttpException if response is not successful
             throw new HttpException(response.message(), response.code());
-        } catch (IOException e) {
+        } catch (IOException | IllegalArgumentException e) {
             log.error(e.getMessage(), e);
             return null;
         }

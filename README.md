@@ -22,7 +22,8 @@ Information regarding traffic congestion per specific location
      lineId: String, //required
      lineName: String, //required
      name: String, //required
-     route: [Route] //min 1
+     route: [Route], //min 1
+     advisoties: [Advisory]
 }
 ```
 #### Route
@@ -32,6 +33,15 @@ Information regarding traffic congestion per specific location
      congestionLevel: Integer //required
 }
 ```
+### Advisory
+```
+{
+     lineId: String, //required
+     trafficPointId: String, //required
+     message: String, //required
+}
+```
+
 Sample document stored in database:
 ```
 {
@@ -59,6 +69,13 @@ Sample document stored in database:
                             "timestamp" : NumberLong(20170521000706),
                             "congestionLevel" : 1
                         }
+                    ],
+                    "advisories" : [
+                         {
+                              "lineId" : "1",
+                              "trafficPoint" : "1",
+                              "message" : "MMDA ALERT: Ongoing DPWH Road Re-blocking at EDSA Quezon Ave. SB as of 6:21 AM. 1 lane occupied. Expect heavy traffic in the area."
+                         }
                     ]
                 } 
             ]
@@ -67,6 +84,3 @@ Sample document stored in database:
     ]
 }
 ```
-### Advisory
-News and announcements
-// TODO

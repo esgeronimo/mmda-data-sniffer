@@ -23,7 +23,7 @@ Information regarding traffic congestion per specific location
      lineName: String, //required
      name: String, //required
      route: [Route], //min 1
-     advisoties: [Advisory]
+     advisories: [Advisory]
 }
 ```
 #### Route

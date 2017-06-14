@@ -1,20 +1,17 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
+import org.springframework.util.Assert;
+
 public class Route {
     private String name;
     private Long timestamp;
     private Integer congestionLevel;
 
     public Route(String name, Integer congestionLevel, Long timestamp) {
-        if (name == null) {
-            throw new IllegalArgumentException("Name cannot be null");
-        }
-        if (congestionLevel == null) {
-            throw new IllegalArgumentException("Congestion Level cannot be null");
-        }
-        if (timestamp == null) {
-            throw new IllegalArgumentException("Timestamp cannot be null");
-        }
+        Assert.notNull(name, "Name cannot be null");
+        Assert.notNull(congestionLevel, "Congestion Level cannot be null");
+        Assert.notNull(timestamp, "Timestamp cannot be null");
+
         this.name = name;
         this.congestionLevel = congestionLevel;
         this.timestamp = timestamp;

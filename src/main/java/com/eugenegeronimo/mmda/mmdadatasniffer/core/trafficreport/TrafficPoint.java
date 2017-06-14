@@ -1,5 +1,7 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
+import org.springframework.util.Assert;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,24 +14,12 @@ public class TrafficPoint {
     private List<Advisory> advisories; // optional
 
     public TrafficPoint(String id, String lineId, String lineName, String name, List<Route> routes, List<Advisory> advisories) {
-        if (id == null) {
-            throw new IllegalArgumentException("Id cannot be null");
-        }
-        if (lineId == null) {
-            throw new IllegalArgumentException("Line ID cannot be null");
-        }
-        if (lineName == null) {
-            throw new IllegalArgumentException("Line Name cannot be null");
-        }
-        if (name == null) {
-            throw new IllegalArgumentException("Name cannot be null");
-        }
-        if (routes == null) {
-            throw new IllegalArgumentException("Routes cannot be null");
-        }
-        if (routes.isEmpty()) {
-            throw new IllegalArgumentException("Routes must have a minimum of 1 item");
-        }
+        Assert.notNull(id, "Id cannot be null");
+        Assert.notNull(lineId, "Line ID cannot be null");
+        Assert.notNull(lineName, "Line Name cannot be null");
+        Assert.notNull(name, "Name cannot be null");
+        Assert.notNull(routes, "Routes cannot be null");
+        Assert.isTrue(!routes.isEmpty(), "Routes must have a minimum of 1 item");
 
         this.id = id;
         this.lineId = lineId;

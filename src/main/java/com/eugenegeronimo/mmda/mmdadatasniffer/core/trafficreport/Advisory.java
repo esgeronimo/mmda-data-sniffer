@@ -1,20 +1,16 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
+import org.springframework.util.Assert;
+
 public class Advisory {
     private String lineId;
     private String trafficPointId;
     private String message;
 
     public Advisory(String lineId, String trafficPointId, String message) {
-        if (lineId == null) {
-            throw new IllegalArgumentException("Line ID cannot be null");
-        }
-        if (trafficPointId == null) {
-            throw new IllegalArgumentException("Traffic Point ID cannot be null");
-        }
-        if (message == null) {
-            throw new IllegalArgumentException("Message cannot be null");
-        }
+        Assert.notNull(lineId, "Line ID cannot be null");
+        Assert.notNull(trafficPointId, "Traffic Point ID cannot be null");
+        Assert.notNull(message, "Message cannot be null");
 
         this.lineId = lineId;
         this.trafficPointId = trafficPointId;

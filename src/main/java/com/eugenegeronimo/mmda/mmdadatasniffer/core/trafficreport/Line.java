@@ -1,5 +1,7 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
+import org.springframework.util.Assert;
+
 import java.util.List;
 
 public class Line {
@@ -8,18 +10,10 @@ public class Line {
     private List<TrafficPoint> trafficPoints;
 
     public Line(String id, String name, List<TrafficPoint> trafficPoints) {
-        if (id == null) {
-            throw new IllegalArgumentException("Id cannot be null");
-        }
-        if (name == null) {
-            throw new IllegalArgumentException("Name cannot be null");
-        }
-        if (trafficPoints == null) {
-            throw new IllegalArgumentException("Traffic Points cannot be null");
-        }
-        if (trafficPoints.isEmpty()) {
-            throw new IllegalArgumentException("Traffic Points must have a minimum of 1 item");
-        }
+        Assert.notNull(id, "Id cannot be null");
+        Assert.notNull(name, "Name cannot be null");
+        Assert.notNull(trafficPoints, "Traffic Points cannot be null");
+        Assert.isTrue(!trafficPoints.isEmpty(), "Traffic Points must have a minimum of 1 item");
 
         this.id = id;
         this.name = name;

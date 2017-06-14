@@ -1,6 +1,7 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -11,18 +12,10 @@ public class TrafficReport {
     private List<Line> lines;
 
     public TrafficReport(String id, Long timestamp, List<Line> lines) {
-        if (id == null) {
-            throw new IllegalArgumentException("ID cannot be null");
-        }
-        if (timestamp == null) {
-            throw new IllegalArgumentException("Timestamp cannot be null");
-        }
-        if (lines == null) {
-            throw new IllegalArgumentException("Lines cannot be null");
-        }
-        if (lines.isEmpty()) {
-            throw new IllegalArgumentException("Lines must have a minimum of 1 item");
-        }
+        Assert.notNull(id, "ID cannot be null");
+        Assert.notNull(timestamp, "Timestamp cannot be null");
+        Assert.notNull(lines, "Lines cannot be null");
+        Assert.isTrue(!lines.isEmpty(), "Lines must have a minimum of 1 item");
 
         this.id = id;
         this.timestamp = timestamp;

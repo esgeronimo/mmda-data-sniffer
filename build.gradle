@@ -42,5 +42,7 @@ sonarqube {
 	properties {
 		property "sonar.projectName", "MMDA Data Sniffer"
 		property "sonar.projectKey", "mmda-data-sniffer"
+		property "sonar.organization", "esgeronimo-github"
+		property "sonar.host.url", "https://sonarcloud.io"
 	}
 }

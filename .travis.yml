@@ -16,10 +16,5 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-addons:
-  sonarqube:
-    branches:
-      - 9-sonarqube-cannot-read-unit-tests
-
 script:
   - ./gradlew sonarqube

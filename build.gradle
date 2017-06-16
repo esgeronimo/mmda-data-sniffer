@@ -37,3 +37,10 @@ dependencies {
 	testCompile group: 'com.squareup.okhttp', name: 'mockwebserver', version: '2.7.5'
 
 }
+
+sonarqube {
+	properties {
+		property "sonar.projectName", "MMDA Data Sniffer"
+		property "sonar.projectKey", "mmda-data-sniffer"
+	}
+}

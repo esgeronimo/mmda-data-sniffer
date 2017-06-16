@@ -17,6 +17,7 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'jacoco'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -44,5 +45,6 @@ sonarqube {
 		property "sonar.projectKey", "mmda-data-sniffer"
 		property "sonar.organization", "esgeronimo-github"
 		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.jacoco.reportPaths", "${project.buildDir}/jacoco/test.exec"
 	}
 }

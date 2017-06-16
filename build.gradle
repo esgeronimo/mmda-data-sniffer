@@ -45,6 +45,7 @@ sonarqube {
 		property "sonar.projectKey", "mmda-data-sniffer"
 		property "sonar.organization", "esgeronimo-github"
 		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.login", "${System.env.SONAR_TOKEN}"
 		property "sonar.jacoco.reportPaths", "${project.buildDir}/jacoco/test.exec"
 	}
 }

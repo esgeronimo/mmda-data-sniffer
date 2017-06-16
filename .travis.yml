@@ -18,10 +18,7 @@ cache:
 
 addons:
   sonarqube:
-    token:
-      secure: "JJcjH99cf29VQmBBzMRpRGqj2WOJ73D8xlSe7E7wLqyRy1vf3P1t5p2uQE6LB/3meBDz9RJqDuv+OQDk60tJpvi0qSNcjl/G2cXmTg0Qg0fB/xUp5ZF2zNu+d7ds7EEWbhuNCjuuDFE6SIUvrb+j+UsTyry0U7oxSIdiedQM/KJkLuWHBxlNXJQ0XZrt2HJ0mN/9EWQHr+aOzlAIX9lABR3NoqemxJzsQpq4ig1Wwfes18vp9te7Pt0rzd3Ujl85Ifk6pEI3wpCLP0w3Gsjoi/jgQFj6ja9RdxalR7yIoDQn+1kF1Oy4GsObKKtlPW8EAsQER19RxDUgXtqLzTWblpirHwuWlHoezoy7xcs41hacgh7ovQksHA5FtVkBO3ynxUmrnvxgUX1s7eLR6H+2t2cPlBFf/0P5wscpDpa5DUqEbR52AQ/bbgvEUGfLY0+dda3Wrr4UNwh/IQLCfMEBpmo/7Dr3wF1/PxWG8nCHxwOqeFqB2DQkyx0k/2vWoYkbyBJttjGzcLWweyBHy1HXhq4lonL/OxRV3yw83ZIS2M+9LsrI6JUGZHa8WXcZZdEAura9lWGXO8+AfTOV4F1JL2JTcd+Fkl2wA80W1j1DBTsemDkdwp8nzVVAboqWRln4SgGcG6uE3Hrun7DwbX/28Sn7QJ/ST30in9jQUBXIiNY="
     branches:
-      - master
       - 9-sonarqube-cannot-read-unit-tests
 
 script:

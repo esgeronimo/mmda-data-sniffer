@@ -17,6 +17,7 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'jacoco'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -36,4 +37,15 @@ dependencies {
 	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
 	testCompile group: 'com.squareup.okhttp', name: 'mockwebserver', version: '2.7.5'
 
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectName", "MMDA Data Sniffer"
+		property "sonar.projectKey", "mmda-data-sniffer"
+		property "sonar.organization", "esgeronimo-github"
+		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.login", "${System.env.SONAR_TOKEN}"
+		property "sonar.jacoco.reportPaths", "${project.buildDir}/jacoco/test.exec"
+	}
 }

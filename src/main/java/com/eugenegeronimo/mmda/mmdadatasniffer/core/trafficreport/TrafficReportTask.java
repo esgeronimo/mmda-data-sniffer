@@ -18,19 +18,18 @@ public class TrafficReportTask {
     private static final Logger log = LoggerFactory.getLogger(TrafficReportTask.class);
 
     private TrafficReportRepository repository;
-
-    private TrafficReportApiClient apiClient;
+    private TrafficReportClientFacade trafficReportClient;
 
     @Autowired
-    public TrafficReportTask(TrafficReportRepository repository, TrafficReportApiClient apiClient) {
+    public TrafficReportTask(TrafficReportRepository repository, TrafficReportClientFacade traffocReportClient) {
         this.repository = repository;
-        this.apiClient = apiClient;
+        this.trafficReportClient = traffocReportClient;
     }
 
     @Scheduled(fixedDelayString = "${task.delay}")
     public void getAndSave() {
         try {
-            TrafficReport trafficReport = apiClient.getTrafficReport(new Date().getTime());
+            TrafficReport trafficReport = trafficReportClient.getTrafficReport(new Date().getTime());
             repository.save(trafficReport);
         } catch (BaseApiClient.HttpException e) {
             log.error(e.getMessage(), e);

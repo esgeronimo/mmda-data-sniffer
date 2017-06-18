@@ -1,7 +1,6 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.base.BaseApiClient;
-import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.client.TrafficReportApiClient;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.repository.TrafficReportRepository;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -14,7 +13,7 @@ public class TrafficReportTaskTest {
         Mockito.doNothing().when(repository).save(Mockito.any(TrafficReport.class));
 
         TrafficReport trafficReport = Mockito.mock(TrafficReport.class);
-        TrafficReportApiClient apiClient = Mockito.mock(TrafficReportApiClient.class);
+        TrafficReportClientFacade apiClient = Mockito.mock(TrafficReportClientFacade.class);
         Mockito.when(apiClient.getTrafficReport(Mockito.anyLong())).thenReturn(trafficReport);
 
         new TrafficReportTask(repository, apiClient).getAndSave();
@@ -27,7 +26,7 @@ public class TrafficReportTaskTest {
     public void shouldNotSaveTrafficReportWhenHttpExceptionThrown() throws BaseApiClient.HttpException {
         TrafficReportRepository repository = Mockito.mock(TrafficReportRepository.class);
 
-        TrafficReportApiClient apiClient = Mockito.mock(TrafficReportApiClient.class);
+        TrafficReportClientFacade apiClient = Mockito.mock(TrafficReportClientFacade.class);
         BaseApiClient.HttpException exception = Mockito.mock(BaseApiClient.HttpException.class);
         Mockito.when(apiClient.getTrafficReport(Mockito.anyLong())).thenThrow(exception);
 

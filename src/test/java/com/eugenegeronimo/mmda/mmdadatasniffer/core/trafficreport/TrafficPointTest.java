@@ -81,7 +81,7 @@ public class TrafficPointTest {
         List advisories = Mockito.mock(List.class);
 
         TrafficPoint trafficPoint = new TrafficPoint("ID", "Line ID", "Line Name", "Name", routes, advisories);
-        Assert.assertEquals("ID", trafficPoint.getId());
+        Assert.assertEquals("ID", trafficPoint.getTrafficPointId());
         Assert.assertEquals("Line ID", trafficPoint.getLineId());
         Assert.assertEquals("Line Name", trafficPoint.getLineName());
         Assert.assertEquals("Name", trafficPoint.getName());

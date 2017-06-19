@@ -44,7 +44,7 @@ public class TrafficReportClientFacade {
         TrafficReport trafficReport = trafficReportClient.getTrafficReport(timestamp);
         trafficReport.getLines().forEach(line -> {
             line.getTrafficPoints().forEach(trafficPoint -> {
-                String key = trafficPoint.getLineId() + "_" + trafficPoint.getId();
+                String key = trafficPoint.getLineId() + "_" + trafficPoint.getTrafficPointId();
                 trafficPoint.setAdvisories(advisoryMap.get(key));
             });
         });

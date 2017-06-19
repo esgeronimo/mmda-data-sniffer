@@ -5,27 +5,27 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 public class Line {
-    private String id;
+    private String lineId;
     private String name;
     private List<TrafficPoint> trafficPoints;
 
-    public Line(String id, String name, List<TrafficPoint> trafficPoints) {
-        Assert.notNull(id, "Id cannot be null");
+    public Line(String lineId, String name, List<TrafficPoint> trafficPoints) {
+        Assert.notNull(lineId, "Line ID cannot be null");
         Assert.notNull(name, "Name cannot be null");
         Assert.notNull(trafficPoints, "Traffic Points cannot be null");
         Assert.isTrue(!trafficPoints.isEmpty(), "Traffic Points must have a minimum of 1 item");
 
-        this.id = id;
+        this.lineId = lineId;
         this.name = name;
         this.trafficPoints = trafficPoints;
     }
 
-    public String getId() {
-        return id;
+    public String getLineId() {
+        return lineId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setLineId(String lineId) {
+        this.lineId = lineId;
     }
 
     public String getName() {

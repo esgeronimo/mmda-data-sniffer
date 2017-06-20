@@ -34,12 +34,12 @@ public class LineListAdapterTest {
         Assert.assertEquals(1, lineList.size());
 
         Line line = lineList.get(0);
-        Assert.assertEquals("1", line.getId());
+        Assert.assertEquals("1", line.getLineId());
         Assert.assertEquals("EDSA", line.getName());
         Assert.assertEquals(2, line.getTrafficPoints().size());
 
         TrafficPoint trafficPoint = line.getTrafficPoints().get(1);
-        Assert.assertEquals("2", trafficPoint.getId());
+        Assert.assertEquals("2", trafficPoint.getTrafficPointId());
         Assert.assertEquals("1", trafficPoint.getLineId());
         Assert.assertEquals("EDSA", trafficPoint.getLineName());
         Assert.assertEquals("Kaingin Road", trafficPoint.getName());

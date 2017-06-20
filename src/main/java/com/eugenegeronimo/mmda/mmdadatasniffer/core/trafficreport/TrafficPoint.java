@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrafficPoint {
-    private String id;
+    private String trafficPointId;
     private String lineId;
     private String lineName;
     private String name;
     private List<Route> routes;
     private List<Advisory> advisories; // optional
 
-    public TrafficPoint(String id, String lineId, String lineName, String name, List<Route> routes, List<Advisory> advisories) {
-        Assert.notNull(id, "Id cannot be null");
+    public TrafficPoint(String trafficPointId, String lineId, String lineName, String name, List<Route> routes, List<Advisory> advisories) {
+        Assert.notNull(trafficPointId, "Traffic Point ID cannot be null");
         Assert.notNull(lineId, "Line ID cannot be null");
         Assert.notNull(lineName, "Line Name cannot be null");
         Assert.notNull(name, "Name cannot be null");
         Assert.notNull(routes, "Routes cannot be null");
         Assert.isTrue(!routes.isEmpty(), "Routes must have a minimum of 1 item");
 
-        this.id = id;
+        this.trafficPointId = trafficPointId;
         this.lineId = lineId;
         this.lineName = lineName;
         this.name = name;
@@ -29,12 +29,12 @@ public class TrafficPoint {
         this.advisories =  advisories;
     }
 
-    public String getId() {
-        return id;
+    public String getTrafficPointId() {
+        return trafficPointId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTrafficPointId(String trafficPointId) {
+        this.trafficPointId = trafficPointId;
     }
 
     public String getLineId() {

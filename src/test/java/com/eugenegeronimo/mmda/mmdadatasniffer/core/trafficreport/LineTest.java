@@ -43,7 +43,7 @@ public class LineTest {
         Mockito.when(trafficPoints.isEmpty()).thenReturn(false);
 
         Line line = new Line("ID", "Name", trafficPoints);
-        Assert.assertEquals("ID", line.getId());
+        Assert.assertEquals("ID", line.getLineId());
         Assert.assertEquals("Name", line.getName());
         Assert.assertEquals(trafficPoints, line.getTrafficPoints());
     }

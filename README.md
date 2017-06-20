@@ -9,7 +9,7 @@ Information regarding traffic congestion per specific location
 #### Line
 ```
 {
-     id: String, //required
+     lineId: String, //required
      name: String, //required
      trafficPoints: [TrafficPoint] //min 1
 }
@@ -17,7 +17,7 @@ Information regarding traffic congestion per specific location
 #### TrafficPoint
 ```
 {
-     id: String, //required
+     lineId: String, //required
      timestamp: Long, //required
      lineId: String, //required
      lineName: String, //required

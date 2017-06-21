@@ -1,86 +1,60 @@
 # mmda-data-sniffer
 [![Build Status](https://travis-ci.org/esgeronimo/mmda-data-sniffer.svg?branch=master)](https://travis-ci.org/esgeronimo/mmda-data-sniffer)
 
-Just some application that gets data from MMDA Interaksyon occasionally and stores information in a MongoDB database.
+Retrieves information from the MMDA Interaksyon website through the following URLs:
+* http://mmdatraffic.interaksyon.com/data.traffic.status.php?_=TIMESTAMP
+* http://mmdatraffic.interaksyon.com/data.traffic.advisories.php?_=TIMESTAMP
 
-## Document Structure
-### Traffic Report
-Information regarding traffic congestion per specific location
-#### Line
-```
-{
-     lineId: String, //required
-     name: String, //required
-     trafficPoints: [TrafficPoint] //min 1
-}
-```
-#### TrafficPoint
-```
-{
-     lineId: String, //required
-     timestamp: Long, //required
-     lineId: String, //required
-     lineName: String, //required
-     name: String, //required
-     route: [Route], //min 1
-     advisories: [Advisory]
-}
-```
-#### Route
-```
-{
-     name: String, //required
-     congestionLevel: Integer //required
-}
-```
-#### Advisory
-```
-{
-     lineId: String, //required
-     trafficPointId: String, //required
-     message: String, //required
-}
-```
+What this application does with the information is:
+* Transform information retrieved into a more "readable" structure
+* Advisories are merged with the traffic status information based on their corresponding "traffic points"
+* Save information in a MongoDB database for future use
 
-Sample document stored in database:
+Sample document structure:
 ```
 {
-    "_id" : ObjectId("592067d076b23f0ca890b0be"),
-    "_class" : "com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficReport",
-    "timestamp" : NumberLong(1495295951644),
-    "lines" : [ 
+  "_id": "9adae047-05b1-43bc-9e4b-97dd93d8fa69",
+  "_class": "com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.TrafficReport",
+  "timestamp": 1498014029550,
+  "lines": [
+    {
+      "lineId": "1",
+      "name": "EDSA",
+      "trafficPoints": [
         {
-            "_id" : "1",
-            "name" : "EDSA",
-            "trafficPoints" : [ 
-                {
-                    "_id" : "1",
-                    "lineId" : "1",
-                    "lineName" : "EDSA",
-                    "name" : "Balintawak",
-                    "routes" : [ 
-                        {
-                            "name" : "North Bound",
-                            "timestamp" : NumberLong(20170521000706),
-                            "congestionLevel" : 2
-                        }, 
-                        {
-                            "name" : "South Bound",
-                            "timestamp" : NumberLong(20170521000706),
-                            "congestionLevel" : 1
-                        }
-                    ],
-                    "advisories" : [
-                         {
-                              "lineId" : "1",
-                              "trafficPoint" : "1",
-                              "message" : "MMDA ALERT: Ongoing DPWH Road Re-blocking at EDSA Quezon Ave. SB as of 6:21 AM. 1 lane occupied. Expect heavy traffic in the area."
-                         }
-                    ]
-                } 
-            ]
+          "trafficPointId": "30",
+          "lineId": "1",
+          "lineName": "EDSA",
+          "name": "Magallanes",
+          "routes": [
+            {
+              "name": "North Bound",
+              "timestamp": 20170621110840,
+              "congestionLevel": 4
+            },
+            {
+              "name": "South Bound",
+              "timestamp": 20170621110840,
+              "congestionLevel": 1
+            }
+          ],
+          "advisories": [
+            {
+              "lineId": "1",
+              "trafficPointId": "30",
+              "message": "ADVISORY: DPWH Expansion Joint Rehabilitation at EDSA Magallanes F/O  SB. as of 11:58 PM. 1 lane occupied."
+            },
+            {
+              "lineId": "1",
+              "trafficPointId": "30",
+              "message": "ADVISORY: Ongoing Skyway Stage 3 works along Osmena Highway and Quirino Avenue."
+            }
+          ]
         },
         ...
-    ]
+      ]
+    },
+    ...
+  ]
 }
 ```

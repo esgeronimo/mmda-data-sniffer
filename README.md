@@ -1,7 +1,7 @@
 # mmda-data-sniffer
 [![Build Status](https://travis-ci.org/esgeronimo/mmda-data-sniffer.svg?branch=master)](https://travis-ci.org/esgeronimo/mmda-data-sniffer)
 
-Retrieves information from the MMDA Interaksyon website through the following URLs:
+Captures information from the [MMDA Interaksyon Traffic Monitoring System](http://mmdatraffic.interaksyon.com/system-view.php) through the following URLs:
 * http://mmdatraffic.interaksyon.com/data.traffic.status.php?_=TIMESTAMP
 * http://mmdatraffic.interaksyon.com/data.traffic.advisories.php?_=TIMESTAMP
 

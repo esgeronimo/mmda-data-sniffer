@@ -17,15 +17,15 @@ public class TrafficReportClientFacade {
 
     @Autowired
     public TrafficReportClientFacade(TrafficReportApiClient trafficReportClient, AdvisoriesClient advisoriesClient) {
-        Assert.notNull(trafficReportClient, "Traffic Report Client cannot be null");
-        Assert.notNull(advisoriesClient, "Advisories Client cannot not be null");
+        Assert.notNull(trafficReportClient, "Argument trafficReportClient is required.");
+        Assert.notNull(advisoriesClient, "Argument advisoriesClient is required.");
 
         this.trafficReportClient = trafficReportClient;
         this.advisoriesClient = advisoriesClient;
     }
 
     public TrafficReport getTrafficReport(Long timestamp) throws BaseApiClient.HttpException {
-        Assert.notNull(timestamp, "Timestamp is required");
+        Assert.notNull(timestamp, "Argument timestamp is required.");
 
         List<Advisory> advisories = advisoriesClient.getAdvisories(timestamp);
 

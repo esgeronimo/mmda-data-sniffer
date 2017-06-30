@@ -28,7 +28,7 @@ public class AdvisoriesAdapter extends BaseAdapter {
     }
 
     public List<Advisory> parse(String json) {
-        Assert.isTrue(!StringUtils.isEmpty(json), "Input should not be empty");
+        Assert.isTrue(!StringUtils.isEmpty(json), "Argument json should not be empty.");
         Assert.isTrue(isJsonArray(json), "Input should be a JSON array: " + json);
 
         List<Advisory> advisories = new ArrayList<>();

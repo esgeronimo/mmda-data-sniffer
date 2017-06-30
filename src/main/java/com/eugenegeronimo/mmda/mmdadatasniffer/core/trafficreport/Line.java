@@ -10,10 +10,10 @@ public class Line {
     private List<TrafficPoint> trafficPoints;
 
     public Line(String lineId, String name, List<TrafficPoint> trafficPoints) {
-        Assert.notNull(lineId, "Line ID cannot be null");
-        Assert.notNull(name, "Name cannot be null");
-        Assert.notNull(trafficPoints, "Traffic Points cannot be null");
-        Assert.isTrue(!trafficPoints.isEmpty(), "Traffic Points must have a minimum of 1 item");
+        Assert.notNull(lineId, "Argument lineId is required.");
+        Assert.notNull(name, "Argument name is required.");
+        Assert.notNull(trafficPoints, "Argument trafficPoints is required.");
+        Assert.isTrue(!trafficPoints.isEmpty(), "Argument trafficPoints must have a minimum of 1 item.");
 
         this.lineId = lineId;
         this.name = name;

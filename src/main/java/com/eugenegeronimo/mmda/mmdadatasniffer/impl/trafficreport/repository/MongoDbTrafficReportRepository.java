@@ -16,13 +16,13 @@ public class MongoDbTrafficReportRepository implements TrafficReportRepository {
 
     @Autowired
     public MongoDbTrafficReportRepository(MongoOperations operations) {
-        Assert.notNull(operations, "Argument operations cannot be null");
+        Assert.notNull(operations, "Argument operations is required.");
         this.operations = operations;
     }
 
     @Override
     public void save(TrafficReport trafficReport) {
-        Assert.notNull(trafficReport, "Argument trafficReport cannot be null");
+        Assert.notNull(trafficReport, "Argument trafficReport is required.");
         operations.save(trafficReport);
     }
 }

@@ -12,10 +12,10 @@ public class TrafficReport {
     private List<Line> lines;
 
     public TrafficReport(String id, Long timestamp, List<Line> lines) {
-        Assert.notNull(id, "ID cannot be null");
-        Assert.notNull(timestamp, "Timestamp cannot be null");
-        Assert.notNull(lines, "Lines cannot be null");
-        Assert.isTrue(!lines.isEmpty(), "Lines must have a minimum of 1 item");
+        Assert.notNull(id, "Argument id is required.");
+        Assert.notNull(timestamp, "Argument timestamp is required.");
+        Assert.notNull(lines, "Argument lines is required.");
+        Assert.isTrue(!lines.isEmpty(), "Argument lines must have a minimum of 1 item.");
 
         this.id = id;
         this.timestamp = timestamp;

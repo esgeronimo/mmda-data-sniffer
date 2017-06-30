@@ -8,9 +8,9 @@ public class Route {
     private Integer congestionLevel;
 
     public Route(String name, Integer congestionLevel, Long timestamp) {
-        Assert.notNull(name, "Name cannot be null");
-        Assert.notNull(congestionLevel, "Congestion Level cannot be null");
-        Assert.notNull(timestamp, "Timestamp cannot be null");
+        Assert.notNull(name, "Argument name is required.");
+        Assert.notNull(congestionLevel, "Argument congestionLevel is required.");
+        Assert.notNull(timestamp, "Argument timestamp is required.");
 
         this.name = name;
         this.congestionLevel = congestionLevel;

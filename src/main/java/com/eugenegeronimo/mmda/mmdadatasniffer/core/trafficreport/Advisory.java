@@ -8,9 +8,9 @@ public class Advisory {
     private String message;
 
     public Advisory(String lineId, String trafficPointId, String message) {
-        Assert.notNull(lineId, "Line ID cannot be null");
-        Assert.notNull(trafficPointId, "Traffic Point ID cannot be null");
-        Assert.notNull(message, "Message cannot be null");
+        Assert.notNull(lineId, "Argument lineId is required.");
+        Assert.notNull(trafficPointId, "Argument trafficPointId is required.");
+        Assert.notNull(message, "Argument message is required.");
 
         this.lineId = lineId;
         this.trafficPointId = trafficPointId;

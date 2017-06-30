@@ -14,12 +14,12 @@ public class TrafficPoint {
     private List<Advisory> advisories; // optional
 
     public TrafficPoint(String trafficPointId, String lineId, String lineName, String name, List<Route> routes, List<Advisory> advisories) {
-        Assert.notNull(trafficPointId, "Traffic Point ID cannot be null");
-        Assert.notNull(lineId, "Line ID cannot be null");
-        Assert.notNull(lineName, "Line Name cannot be null");
-        Assert.notNull(name, "Name cannot be null");
-        Assert.notNull(routes, "Routes cannot be null");
-        Assert.isTrue(!routes.isEmpty(), "Routes must have a minimum of 1 item");
+        Assert.notNull(trafficPointId, "Argument trafficPointId is required.");
+        Assert.notNull(lineId, "Argument lineId is required.");
+        Assert.notNull(lineName, "Argument lineName is required.");
+        Assert.notNull(name, "Argument name is required.");
+        Assert.notNull(routes, "Argument routes is required.");
+        Assert.isTrue(!routes.isEmpty(), "Argument routes must have a minimum of 1 item.");
 
         this.trafficPointId = trafficPointId;
         this.lineId = lineId;

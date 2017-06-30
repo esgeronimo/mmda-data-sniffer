@@ -56,7 +56,7 @@ public class LineListAdapter extends BaseAdapter {
      * @return
      */
     public List<Line> parse(String json) {
-        Assert.isTrue(!StringUtils.isEmpty(json), "Input should not be empty");
+        Assert.isTrue(!StringUtils.isEmpty(json), "Argument json is should not be empty.");
         Assert.isTrue(isJsonArray(json), "Input should be a JSON array: " + json);
 
         Map<String, List<TrafficPoint>> trafficPointMap = new HashMap<>();

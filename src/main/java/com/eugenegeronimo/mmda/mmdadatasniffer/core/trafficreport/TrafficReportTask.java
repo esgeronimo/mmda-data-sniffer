@@ -7,6 +7,7 @@ import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.repository.Tra
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +27,6 @@ public class TrafficReportTask {
         this.trafficReportClient = traffocReportClient;
     }
 
-    @Scheduled(fixedDelayString = "${task.delay}")
     public void getAndSave() {
         try {
             TrafficReport trafficReport = trafficReportClient.getTrafficReport(new Date().getTime());

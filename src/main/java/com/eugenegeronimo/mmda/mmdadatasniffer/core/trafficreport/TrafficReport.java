@@ -1,10 +1,12 @@
 package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.util.Assert;
 
 import java.util.List;
 
+@TypeAlias("TrafficReport")
 public class TrafficReport {
     @Id
     private String id;

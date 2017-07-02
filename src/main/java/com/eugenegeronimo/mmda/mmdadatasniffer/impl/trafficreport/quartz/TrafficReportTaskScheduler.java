@@ -30,7 +30,7 @@ public class TrafficReportTaskScheduler implements TaskScheduler {
 
         Trigger trigger = TriggerBuilder.newTrigger()
                 .startNow()
-                .withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(5)) // Leave this simple implementation for now
+                .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever(30)) // Leave this simple implementation for now
                 .build();
 
         try {

@@ -1,0 +1,1 @@
+scheduler:  java -jar build/libs/*.jar

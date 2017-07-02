@@ -1,1 +1,1 @@
-scheduler:  java -jar build/libs/*.jar
+worker:  java -jar build/libs/*.jar

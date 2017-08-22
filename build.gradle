@@ -32,6 +32,7 @@ dependencies {
 	compile 'org.springframework.data:spring-data-mongodb:1.10.3.RELEASE'
 	compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.7.0'
 	compile group: 'org.json', name: 'json', version: '20160810'
+	compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.3.0'
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'

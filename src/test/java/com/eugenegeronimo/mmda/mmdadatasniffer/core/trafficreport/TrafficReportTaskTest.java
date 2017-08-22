@@ -16,7 +16,7 @@ public class TrafficReportTaskTest {
         TrafficReportClientFacade apiClient = Mockito.mock(TrafficReportClientFacade.class);
         Mockito.when(apiClient.getTrafficReport(Mockito.anyLong())).thenReturn(trafficReport);
 
-        new TrafficReportTask(repository, apiClient).getAndSave();
+        new TrafficReportTask(repository, apiClient).execute();
 
         Mockito.verify(apiClient, Mockito.times(1)).getTrafficReport(Mockito.anyLong());
         Mockito.verify(repository, Mockito.times(1)).save(trafficReport);
@@ -30,7 +30,7 @@ public class TrafficReportTaskTest {
         BaseApiClient.HttpException exception = Mockito.mock(BaseApiClient.HttpException.class);
         Mockito.when(apiClient.getTrafficReport(Mockito.anyLong())).thenThrow(exception);
 
-        new TrafficReportTask(repository, apiClient).getAndSave();
+        new TrafficReportTask(repository, apiClient).execute();
 
         Mockito.verify(apiClient, Mockito.times(1)).getTrafficReport(Mockito.anyLong());
         Mockito.verify(repository, Mockito.never()).save(Mockito.any(TrafficReport.class));

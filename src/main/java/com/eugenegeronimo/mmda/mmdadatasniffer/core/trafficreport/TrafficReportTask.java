@@ -2,6 +2,7 @@ package com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport;
 
 
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.base.BaseApiClient;
+import com.eugenegeronimo.mmda.mmdadatasniffer.core.base.Task;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.client.TrafficReportApiClient;
 import com.eugenegeronimo.mmda.mmdadatasniffer.core.trafficreport.repository.TrafficReportRepository;
 import org.slf4j.Logger;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class TrafficReportTask {
+public class TrafficReportTask implements Task {
 
     private static final Logger log = LoggerFactory.getLogger(TrafficReportTask.class);
 
@@ -27,7 +28,8 @@ public class TrafficReportTask {
         this.trafficReportClient = traffocReportClient;
     }
 
-    public void getAndSave() {
+    @Override
+    public void execute() {
         try {
             TrafficReport trafficReport = trafficReportClient.getTrafficReport(new Date().getTime());
             repository.save(trafficReport);
